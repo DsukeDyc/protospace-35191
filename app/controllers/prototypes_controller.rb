@@ -14,7 +14,7 @@ class PrototypesController < ApplicationController
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
-      redirect_to root_path(@prototype)
+      redirect_to root_path
     else
       render :new
     end
@@ -36,11 +36,11 @@ class PrototypesController < ApplicationController
     end
   end
 
-  def destoroy
-   if @prototype.destory
+  def destroy
+   if @prototype.destroy
     redirect_to root_path
     else
-      render :root_path
+    redirect_to :root_path
     end
   end
 
@@ -55,6 +55,6 @@ class PrototypesController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to rootpath unless current_user == @prototype.user
+    redirect_to root_path unless current_user == @prototype.user
   end
 end
